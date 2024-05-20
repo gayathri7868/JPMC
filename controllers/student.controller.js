@@ -26,6 +26,12 @@ async function getStudentsById(req, res) {
         else {
             res.status(200).send(student)
         }
+
+        // const id = document.getElementById("id").value
+        // const name = document.getElementById("name").value
+        // const branch = document.getElementById("branch").value
+        // const student = await studentModel.findById(id)
+        // res.send(student)
     }
     catch (err) {
         res.status(404).send("Cannot display student details ")
@@ -68,7 +74,7 @@ async function editStudent(req, res) {
 
 async function deleteStudent(req, res) {
     const { id } = req.params
-    const student = await studentModel.findByIdAndUpdate(id, {
+    const student = await studentModel.findByIdAndDelete(id, {
         _id: id,
         name: req.body.name,
         branch: req.body.branch,
